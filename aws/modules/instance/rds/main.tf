@@ -70,7 +70,7 @@ resource "aws_db_subnet_group" "this" {
   subnet_ids = var.subnet_ids
 }
 
-resource "aws_rds_cluster_instance" "learn" {
+resource "aws_rds_cluster_instance" "this" {
   count               = 1
   identifier          = "${var.cluster_identifier}-instance"
   cluster_identifier  = aws_rds_cluster.this.id
