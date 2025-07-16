@@ -79,3 +79,19 @@ resource "aws_rds_cluster_instance" "this" {
   instance_class      = "db.t3.medium"
   publicly_accessible = false
 }
+
+output "master_username" {
+  value = aws_rds_cluster.this.master_username
+}
+
+output "endpoint" {
+  value = aws_rds_cluster.this.endpoint
+}
+
+output "port" {
+  value = aws_rds_cluster.this.port
+}
+
+output "database_name" {
+  value = aws_rds_cluster.this.database_name
+}
