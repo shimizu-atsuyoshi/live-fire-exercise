@@ -32,3 +32,13 @@ variable "private_subnet_d_cidr_block" {
   description = "private subnet d cidr block"
   type        = string
 }
+
+variable "database_master_password" {
+  description = "database master password"
+  type        = string
+}
+
+variable "database_name" {
+  description = "database name"
+  type        = string
+}
