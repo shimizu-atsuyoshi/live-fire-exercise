@@ -1,10 +1,10 @@
-name: destroy
+name: aws destroy
 
 on:
   workflow_dispatch:
 
 jobs:
-  apply:
+  aws-destroy:
     runs-on: ubuntu-latest
 
     permissions:

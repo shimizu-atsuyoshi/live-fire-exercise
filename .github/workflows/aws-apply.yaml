@@ -1,4 +1,4 @@
-name: apply
+name: aws apply
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       - .github/workflows/aws-*
 
 jobs:
-  apply:
+  aws-apply:
     runs-on: ubuntu-latest
 
     permissions:
