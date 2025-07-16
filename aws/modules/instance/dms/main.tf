@@ -50,13 +50,13 @@ resource "aws_dms_replication_instance" "this" {
 }
 
 resource "aws_dms_replication_subnet_group" "this" {
-  replication_subnet_group_id          = "${replication_instance_id}-subnet-group"
-  replication_subnet_group_description = "${replication_instance_id} subnet group"
+  replication_subnet_group_id          = "${var.replication_instance_id}-subnet-group"
+  replication_subnet_group_description = "${var.replication_instance_id} subnet group"
   subnet_ids = var.subnet_ids
 }
 
 resource "aws_security_group" "this" {
-  name   = "${replication_instance_id}-sg"
+  name   = "${var.replication_instance_id}-sg"
   vpc_id = var.vpc_id
   egress {
     from_port   = 0
@@ -65,7 +65,7 @@ resource "aws_security_group" "this" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    "Name" = "${replication_instance_id}-sg"
+    "Name" = "${var.replication_instance_id}-sg"
   }
 }
 
