@@ -1,0 +1,30 @@
+name: destroy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - aws/**
+      - .github/actions/aws-*
+      - .github/workflows/aws-*
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-terraform
+        with:
+          aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
+
+      - name: terraform destroy
+        run: bash -c "terraform init -backend-config=\"./env/backend.conf\" -reconfigure && terraform destroy -auto-approve --var-file=env/default.tfvars"
+        working-directory: ./aws
