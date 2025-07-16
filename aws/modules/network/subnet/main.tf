@@ -9,8 +9,12 @@ variable "subnets" {
     name                    = string
     cidr_block              = string
     availability_zone       = string
-    map_public_ip_on_launch = bool
   }))
+}
+
+variable "map_public_ip_on_launch" {
+  description = "map public ip on launch"
+  type        = bool
 }
 
 resource "aws_subnet" "this" {
@@ -23,4 +27,8 @@ resource "aws_subnet" "this" {
   tags = {
     "Name" = each.value.name
   }
+}
+
+output "ids" {
+  value = [ for idx in sort(keys(aws_subnet.this)) : aws_subnet.this[idx].id ]
 }
