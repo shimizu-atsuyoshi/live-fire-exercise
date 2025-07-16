@@ -57,10 +57,10 @@ module "dms" {
   }
   target_db = {
     engine_name   = "aurora"
-    username      = module.target_db.master_username
+    username      = module.destination_db.master_username
     password      = var.database_master_password
-    server_name   = module.target_db.endpoint
-    port          = module.target_db.port
-    database_name = module.target_db.database_name
+    server_name   = module.destination_db.endpoint
+    port          = module.destination_db.port
+    database_name = module.destination_db.database_name
   }
 }
