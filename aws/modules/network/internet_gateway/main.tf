@@ -4,7 +4,7 @@ variable "vpc_id" {
 }
 
 variable "name" {
-  description = "vpc name"
+  description = "internet gateway name"
   type        = string
 }
 

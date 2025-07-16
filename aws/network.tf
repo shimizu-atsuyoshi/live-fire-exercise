@@ -31,3 +31,11 @@ module "internet_gateway" {
   vpc_id = module.vpc.id
   name = "live-fire-exercise"
 }
+
+module "route_table" {
+  source = "./modules/network/route_table"
+  vpc_id = module.vpc.id
+  subnet_ids = module.public_subnets.ids
+  gateway_id = module.internet_gateway.id
+  name = "live-fire-exercise"
+}
