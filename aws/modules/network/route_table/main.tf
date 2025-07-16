@@ -10,7 +10,7 @@ variable "name" {
 
 variable "subnet_ids" {
   description = "subnet ids"
-  type        = list(string)
+  type        = set(string)
 }
 
 variable "gateway_id" {
