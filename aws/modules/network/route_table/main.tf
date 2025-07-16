@@ -10,7 +10,7 @@ variable "name" {
 
 variable "subnet_ids" {
   description = "subnet ids"
-  type        = set(string)
+  type        = list(string)
 }
 
 variable "gateway_id" {
@@ -26,7 +26,7 @@ resource "aws_route_table" "this" {
 }
 
 resource "aws_route_table_association" "this" {
-  for_each = var.subnet_ids
+  for_each = { for i, id in var.subnet_ids : i => id }
   subnet_id = each.value
   route_table_id = aws_route_table.this.id
 }
