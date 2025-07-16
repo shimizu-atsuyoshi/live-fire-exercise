@@ -76,6 +76,7 @@ resource "aws_db_parameter_group" "this" {
   parameter {
     name  = "binlog_format"
     value = "ROW"
+    apply_method = "pending-reboot"
   }
 }
 
