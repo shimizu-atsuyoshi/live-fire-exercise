@@ -41,3 +41,26 @@ module "destination_db" {
     security_groups = []
   }
 }
+
+module "dms" {
+  source = "./modules/instance/dms"
+  vpc_id = module.vpc.id
+  subnet_ids = module.private_subnets.ids
+  replication_instance_id = "live-fire-exercise"
+  source_db = {
+    engine_name   = "aurora"
+    username      = module.source_db.master_username
+    password      = var.database_master_password
+    server_name   = module.source_db.endpoint
+    port          = module.source_db.port
+    database_name = module.source_db.database_name
+  }
+  target_db = {
+    engine_name   = "aurora"
+    username      = module.target_db.master_username
+    password      = var.database_master_password
+    server_name   = module.target_db.endpoint
+    port          = module.target_db.port
+    database_name = module.target_db.database_name
+  }
+}
