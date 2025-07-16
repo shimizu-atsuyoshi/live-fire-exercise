@@ -34,14 +34,15 @@ variable "ingress" {
 }
 
 resource "aws_rds_cluster" "this" {
-  cluster_identifier     = var.cluster_identifier
-  engine                 = "aurora-mysql"
-  engine_version         = "8.0.mysql_aurora.3.05.2"
-  master_username        = "root"
-  master_password        = var.master_password
-  database_name          = var.database_name
-  vpc_security_group_ids = [aws_security_group.this.id]
-  db_subnet_group_name   = aws_db_subnet_group.this.name
+  cluster_identifier              = var.cluster_identifier
+  engine                          = "aurora-mysql"
+  engine_version                  = "8.0.mysql_aurora.3.05.2"
+  master_username                 = "root"
+  master_password                 = var.master_password
+  database_name                   = var.database_name
+  vpc_security_group_ids          = [aws_security_group.this.id]
+  db_subnet_group_name            = aws_db_subnet_group.this.name
+  db_cluster_parameter_group_name = aws_db_parameter_group.this.name
 }
 
 
@@ -76,17 +77,16 @@ resource "aws_db_parameter_group" "this" {
   parameter {
     name  = "binlog_format"
     value = "ROW"
+    apply_method = "pending-reboot"
   }
 }
 
 resource "aws_rds_cluster_instance" "learn" {
-  count                   = 1
-  identifier              = "${var.cluster_identifier}-instance"
-  cluster_identifier      = aws_rds_cluster.this.id
-  engine                  = aws_rds_cluster.this.engine
-  engine_version          = aws_rds_cluster.this.engine_version
-  instance_class          = "db.t3.medium"
-  db_subnet_group_name    = aws_db_subnet_group.this.name
-  db_parameter_group_name = aws_db_parameter_group.this.name
-  publicly_accessible     = false
+  count               = 1
+  identifier          = "${var.cluster_identifier}-instance"
+  cluster_identifier  = aws_rds_cluster.this.id
+  engine              = aws_rds_cluster.this.engine
+  engine_version      = aws_rds_cluster.this.engine_version
+  instance_class      = "db.t3.medium"
+  publicly_accessible = false
 }
