@@ -1,0 +1,33 @@
+name: plan
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - aws/**
+      - .github/actions/aws-*
+      - .github/workflows/aws-*
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - uses: ./.github/actions/aws-setup
+        with:
+          aws-account-id: ${{ secrets.AWS_ACCOUNT_ID }}
+
+      - name: terraform plan
+        run: tfcmt plan -- bash -c "terraform init -backend-config=\"./env/backend.conf\" -reconfigure && terraform plan --var-file=env/default.tfvars"
+        working-directory: ./aws
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

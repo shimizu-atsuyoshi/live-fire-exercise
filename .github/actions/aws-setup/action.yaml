@@ -1,0 +1,22 @@
+name: setup terraform
+
+inputs:
+  aws-account-id:
+    description: aws account id
+    required: true
+
+description: setup terraform
+
+runs:
+  using: "composite"
+  steps:
+    - name: setting aws credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-region: ap-northeast-1
+        role-to-assume: arn:aws:iam::${{ inputs.aws-account-id }}:role/live-fire-exercise-github-actions-role
+
+    - name: install packages with aqua
+      uses: aquaproj/aqua-installer@v3.0.2
+      with:
+        aqua_version: v2.37.2
