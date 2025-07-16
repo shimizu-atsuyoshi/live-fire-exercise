@@ -43,9 +43,9 @@ module "destination_db" {
 }
 
 module "dms" {
-  source = "./modules/instance/dms"
-  vpc_id = module.vpc.id
-  subnet_ids = module.private_subnets.ids
+  source                  = "./modules/instance/dms"
+  vpc_id                  = module.vpc.id
+  subnet_ids              = module.private_subnets.ids
   replication_instance_id = "live-fire-exercise"
   source_db = {
     engine_name   = "aurora"

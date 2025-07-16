@@ -58,12 +58,6 @@ resource "aws_dms_replication_subnet_group" "this" {
 resource "aws_security_group" "this" {
   name   = "${replication_instance_id}-sg"
   vpc_id = var.vpc_id
-  ingress {
-    from_port       = var.ingress.from_port
-    to_port         = var.ingress.to_port
-    protocol        = var.ingress.protocol
-    security_groups = var.ingress.security_groups
-  }
   egress {
     from_port   = 0
     to_port     = 0
