@@ -1,4 +1,4 @@
-name: plan
+name: aws plan
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ on:
       - .github/workflows/aws-*
 
 jobs:
-  plan:
+  aws-plan:
     runs-on: ubuntu-latest
 
     permissions:
