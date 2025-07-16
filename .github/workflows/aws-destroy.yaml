@@ -1,13 +1,7 @@
 name: destroy
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - aws/**
-      - .github/actions/aws-*
-      - .github/workflows/aws-*
+  workflow_dispatch:
 
 jobs:
   apply:
