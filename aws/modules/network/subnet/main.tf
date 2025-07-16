@@ -18,7 +18,7 @@ variable "map_public_ip_on_launch" {
 }
 
 resource "aws_subnet" "this" {
-  for_each = toset(var.subnets)
+  for_each = { for i in var.subnets : i.name => i }
 
   vpc_id = var.vpc_id
   cidr_block = each.value.cidr_block
