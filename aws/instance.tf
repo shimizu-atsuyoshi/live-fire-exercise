@@ -23,7 +23,9 @@ module "source_db" {
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
-    security_groups = []
+    security_groups = [
+      module.dms.security_group_id,
+    ]
   }
 }
 
