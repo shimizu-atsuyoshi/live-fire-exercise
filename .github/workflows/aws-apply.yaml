@@ -8,6 +8,7 @@ on:
       - aws/**
       - .github/actions/aws-*
       - .github/workflows/aws-*
+  workflow_dispatch:
 
 jobs:
   aws-apply:
