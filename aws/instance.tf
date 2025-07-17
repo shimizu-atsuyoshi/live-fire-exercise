@@ -15,7 +15,7 @@ module "bastion" {
 module "source_db" {
   source             = "./modules/instance/rds"
   vpc_id             = module.vpc.id
-  subnet_ids         = module.private_subnets.ids
+  subnet_ids         = module.public_subnets.ids
   cluster_identifier = "source-cluster"
   master_password    = var.database_master_password
   database_name      = var.database_name
@@ -32,7 +32,7 @@ module "source_db" {
 module "destination_db" {
   source             = "./modules/instance/rds"
   vpc_id             = module.vpc.id
-  subnet_ids         = module.private_subnets.ids
+  subnet_ids         = module.public_subnets.ids
   cluster_identifier = "destination-cluster"
   master_password    = var.database_master_password
   database_name      = var.database_name
