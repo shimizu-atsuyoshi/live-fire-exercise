@@ -90,3 +90,7 @@ resource "aws_dms_endpoint" "target" {
   port          = var.target_db.port
   database_name = var.target_db.database_name
 }
+
+output "security_group_id" {
+  value = aws_security_group.this.id
+}
