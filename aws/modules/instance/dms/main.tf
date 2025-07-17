@@ -91,6 +91,18 @@ resource "aws_dms_endpoint" "target" {
   database_name = var.target_db.database_name
 }
 
+output "replication_instance_arn" {
+  value = aws_dms_replication_instance.this.replication_instance_arn
+}
+
+output "source_endpoint_arn" {
+  value = aws_dms_endpoint.source.endpoint_arn
+}
+
+output "target_endpoint_arn" {
+  value = aws_dms_endpoint.target.endpoint_arn
+}
+
 output "security_group_id" {
   value = aws_security_group.this.id
 }
