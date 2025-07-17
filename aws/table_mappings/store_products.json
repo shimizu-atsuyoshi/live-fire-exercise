@@ -14,6 +14,18 @@
       "rule-type": "transformation",
       "rule-id": "2",
       "rule-name": "2",
+      "rule-target": "schema",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item"
+      },
+      "rule-action": "rename",
+      "value": "mono_v2"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "3",
+      "rule-name": "3",
       "rule-target": "table",
       "object-locator": {
         "schema-name": "store",
@@ -23,16 +35,16 @@
       "value": "product_variants"
     },
     {
-      "rule-type": "selection",
-      "rule-id": "3",
-      "rule-name": "3",
+      "rule-type": "transformation",
+      "rule-id": "4",
+      "rule-name": "4",
       "rule-target": "column",
       "object-locator": {
         "schema-name": "store",
         "table-name": "store_item",
         "column-name": "product_id"
       },
-      "rule-action": "include"
+      "rule-action": "include-column"
     }
   ]
 }
