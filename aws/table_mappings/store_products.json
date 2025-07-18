@@ -3,7 +3,7 @@
     {
       "rule-type": "selection",
       "rule-id": "1",
-      "rule-name": "1",
+      "rule-name": "select schema",
       "object-locator": {
         "schema-name": "store",
         "table-name": "store_item"
@@ -13,7 +13,7 @@
     {
       "rule-type": "transformation",
       "rule-id": "2",
-      "rule-name": "2",
+      "rule-name": "rename schema",
       "rule-target": "schema",
       "object-locator": {
         "schema-name": "store",
@@ -25,7 +25,7 @@
     {
       "rule-type": "transformation",
       "rule-id": "3",
-      "rule-name": "3",
+      "rule-name": "rename table",
       "rule-target": "table",
       "object-locator": {
         "schema-name": "store",
@@ -37,7 +37,7 @@
     {
       "rule-type": "transformation",
       "rule-id": "4",
-      "rule-name": "4",
+      "rule-name": "select product_id",
       "rule-target": "column",
       "object-locator": {
         "schema-name": "store",
@@ -45,6 +45,110 @@
         "column-name": "product_id"
       },
       "rule-action": "include-column"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "5",
+      "rule-name": "rename price",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "price"
+      },
+      "rule-action": "rename",
+      "value": "regular_price"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "6",
+      "rule-name": "rename begin",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "begin"
+      },
+      "rule-action": "rename",
+      "value": "sales_start_at"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "7",
+      "rule-name": "rename end",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "end"
+      },
+      "rule-action": "rename",
+      "value": "sales_end_at"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "8",
+      "rule-name": "rename sale",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "sale"
+      },
+      "rule-action": "rename",
+      "value": "reservation_amount"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "9",
+      "rule-name": "rename buy_quant_limit",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "buy_quant_limit"
+      },
+      "rule-action": "rename",
+      "value": "purchase_limit_per_order"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "10",
+      "rule-name": "rename cancel_date",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "cancel_date"
+      },
+      "rule-action": "rename",
+      "value": "cancellation_deadline_at"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "10",
+      "rule-name": "rename cancel_date",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "cancel_date"
+      },
+      "rule-action": "rename",
+      "value": "cancellation_deadline_at"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "11",
+      "rule-name": "rename store_id",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "store_id"
+      },
+      "rule-action": "rename",
+      "value": "tmp_store_id"
     }
   ]
 }
