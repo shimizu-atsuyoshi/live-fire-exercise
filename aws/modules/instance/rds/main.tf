@@ -84,7 +84,7 @@ resource "aws_rds_cluster_instance" "this" {
   engine              = aws_rds_cluster.this.engine
   engine_version      = aws_rds_cluster.this.engine_version
   instance_class      = "db.t3.medium"
-  publicly_accessible = false
+  publicly_accessible = true
 }
 
 output "master_username" {
