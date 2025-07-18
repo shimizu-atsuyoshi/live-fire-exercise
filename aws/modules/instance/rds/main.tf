@@ -42,6 +42,7 @@ resource "aws_rds_cluster" "this" {
   database_name                   = var.database_name
   vpc_security_group_ids          = [aws_security_group.this.id]
   db_subnet_group_name            = aws_db_subnet_group.this.name
+  db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.this.id
   skip_final_snapshot             = true
 }
 
@@ -85,6 +86,27 @@ resource "aws_rds_cluster_instance" "this" {
   engine_version      = aws_rds_cluster.this.engine_version
   instance_class      = "db.t3.medium"
   publicly_accessible = true
+}
+
+resource "aws_rds_cluster_parameter_group" "this" {
+  name   = "${var.cluster_identifier}-parameter-group"
+  family = "aurora-mysql8.0"
+
+  parameter {
+    name         = "binlog_format"
+    value        = "ROW"
+    apply_method = "pending-reboot"
+  }
+
+  parameter {
+    name         = "binlog_row_image"
+    value        = "FULL"
+    apply_method = "pending-reboot"
+  }
+
+  tags = {
+    "Name": "${var.cluster_identifier}-parameter-group"
+  }
 }
 
 output "master_username" {
