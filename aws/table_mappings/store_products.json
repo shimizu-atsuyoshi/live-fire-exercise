@@ -167,7 +167,19 @@
       "data-type": {
         "type": "boolean"
       },
-      "expression": "CASE WHEN $product_type = 'used' THEN 1 ELSE 0 END"
+      "expression": "1",
+      "filters": [
+        {
+          "filter-type": "source",
+          "column-name": "product_type",
+          "filter-conditions": [
+            {
+              "filter-operator": "eq",
+              "value": "used"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
