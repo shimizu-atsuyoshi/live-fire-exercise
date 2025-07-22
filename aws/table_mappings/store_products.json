@@ -179,7 +179,7 @@
       "data-type": {
         "type": "boolean"
       },
-      "expression": "CASE WHEN product_type = 'used' THEN 1 ELSE 0 END"
+      "expression": "CASE WHEN $product_type = 'used' THEN 1 ELSE 0 END"
     }
   ]
 }
