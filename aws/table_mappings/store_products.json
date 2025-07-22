@@ -157,13 +157,12 @@
       "rule-target": "column",
       "object-locator": {
         "schema-name": "store",
-        "table-name": "store_item",
-        "column-name": "is_point_purchase_prohibited"
+        "table-name": "store_item"
       },
       "rule-action": "add-column",
+      "column-name": "is_point_purchase_prohibited",
       "data-type": "boolean",
-      "value": true,
-      "nullable": false
+      "value": "true"
     }
   ]
 }
