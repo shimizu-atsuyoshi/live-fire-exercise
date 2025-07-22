@@ -156,6 +156,18 @@
     {
       "rule-type": "transformation",
       "rule-id": "13",
+      "rule-name": "select product_type",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "product_type"
+      },
+      "rule-action": "include-column"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "14",
       "rule-name": "convert product_type",
       "rule-target": "column",
       "object-locator": {
@@ -167,7 +179,7 @@
       "data-type": {
         "type": "boolean"
       },
-      "expression": "CASE WHEN product_type = 'used' THEN 1 ELSE 0 END"
+      "expression": "CASE WHEN $product_type = 'used' THEN 1 ELSE 0 END"
     }
   ]
 }
