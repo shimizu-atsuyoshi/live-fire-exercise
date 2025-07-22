@@ -161,9 +161,13 @@
         "column-name": "is_point_purchase_prohibited"
       },
       "rule-action": "add-column",
-      "data-type": "string",
+      "data-type": "boolean",
       "value": true,
       "nullable": false
     }
   ]
 }
+
+// TODO: soldout_actionの対応をする.
+// TODO: is_usedの対応をする.
+// TODO: is_point_purchase_prohibitedに固定でtrueを入れる.
