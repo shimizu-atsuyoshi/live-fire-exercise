@@ -126,7 +126,7 @@
     },
     {
       "rule-type": "transformation",
-      "rule-id": "10",
+      "rule-id": "11",
       "rule-name": "rename cancel_date",
       "rule-target": "column",
       "object-locator": {
@@ -139,7 +139,7 @@
     },
     {
       "rule-type": "transformation",
-      "rule-id": "11",
+      "rule-id": "12",
       "rule-name": "rename store_id",
       "rule-target": "column",
       "object-locator": {
