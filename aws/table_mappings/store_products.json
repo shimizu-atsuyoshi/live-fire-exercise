@@ -148,7 +148,7 @@
       },
       "rule-action": "add-column",
       "column-name": "is_point_purchase_prohibited",
-      "column-type": "boolean",
+      "data-type": "boolean",
       "nullable": false,
       "default-value": true
     }
