@@ -149,6 +149,21 @@
       },
       "rule-action": "rename",
       "value": "tmp_store_id"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "13",
+      "rule-name": "fill is_point_purchase_prohibited",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "store",
+        "table-name": "store_item",
+        "column-name": "is_point_purchase_prohibited"
+      },
+      "rule-action": "add-column",
+      "data-type": "string",
+      "value": true,
+      "nullable": false
     }
   ]
 }
