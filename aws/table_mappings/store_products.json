@@ -152,22 +152,6 @@
         "type": "boolean"
       },
       "expression": "1"
-    },
-    {
-      "rule-type": "transformation",
-      "rule-id": "13",
-      "rule-name": "convert product_type",
-      "rule-target": "column",
-      "object-locator": {
-        "schema-name": "store",
-        "table-name": "store_item"
-      },
-      "rule-action": "add-column",
-      "value": "is_used",
-      "data-type": {
-        "type": "boolean"
-      },
-      "expression": "CASE WHEN $product_type = 'used' THEN 1 ELSE 0 END"
     }
   ]
 }
