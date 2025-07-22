@@ -160,27 +160,15 @@
       "rule-target": "column",
       "object-locator": {
         "schema-name": "store",
-        "table-name": "store_item"
+        "table-name": "store_item",
+        "column-name": "product_type"
       },
       "rule-action": "add-column",
       "value": "is_used",
       "data-type": {
         "type": "boolean"
       },
-      "expression": "1",
-      "filters": [
-        {
-          "filter-type": "source",
-          "column-name": "product_type",
-          "filter-conditions": [
-            {
-              "filter-operator": "eq",
-              "value": "used"
-            }
-          ]
-        }
-      ]
+      "expression": "CASE WHEN $product_type = 'used' THEN true ELSE false END"
     }
   ]
 }
-
