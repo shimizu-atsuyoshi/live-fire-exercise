@@ -141,7 +141,7 @@
       "rule-type": "transformation",
       "rule-id": "12",
       "rule-name": "add is_point_purchase_prohibited",
-      "rule-target": "column",
+      "rule-target": "table",
       "object-locator": {
         "schema-name": "store",
         "table-name": "store_item"
@@ -157,18 +157,17 @@
       "rule-type": "transformation",
       "rule-id": "13",
       "rule-name": "convert product_type",
-      "rule-target": "column",
+      "rule-target": "table",
       "object-locator": {
         "schema-name": "store",
-        "table-name": "store_item",
-        "column-name": "product_type"
+        "table-name": "store_item"
       },
       "rule-action": "add-column",
       "value": "is_used",
       "data-type": {
         "type": "boolean"
       },
-      "expression": "CASE WHEN $product_type = 'used' THEN true ELSE false END"
+      "expression": "CASE WHEN product_type = 'used' THEN 1 ELSE 0 END"
     }
   ]
 }
