@@ -157,7 +157,7 @@
       "rule-type": "transformation",
       "rule-id": "13",
       "rule-name": "convert product_type",
-      "rule-target": "table",
+      "rule-target": "column",
       "object-locator": {
         "schema-name": "store",
         "table-name": "store_item"
