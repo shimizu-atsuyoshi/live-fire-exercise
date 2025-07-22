@@ -140,7 +140,7 @@
     {
       "rule-type": "transformation",
       "rule-id": "12",
-      "rule-name": "fill is_point_purchase_prohibited",
+      "rule-name": "add is_point_purchase_prohibited",
       "rule-target": "column",
       "object-locator": {
         "schema-name": "store",
@@ -148,8 +148,9 @@
       },
       "rule-action": "add-column",
       "column-name": "is_point_purchase_prohibited",
-      "data-type": "boolean",
-      "value": true
+      "column-type": "boolean",
+      "nullable": false,
+      "default-value": true
     }
   ]
 }
