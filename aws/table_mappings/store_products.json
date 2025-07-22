@@ -127,19 +127,6 @@
     {
       "rule-type": "transformation",
       "rule-id": "11",
-      "rule-name": "rename cancel_date",
-      "rule-target": "column",
-      "object-locator": {
-        "schema-name": "store",
-        "table-name": "store_item",
-        "column-name": "cancel_date"
-      },
-      "rule-action": "rename",
-      "value": "cancellation_deadline_at"
-    },
-    {
-      "rule-type": "transformation",
-      "rule-id": "12",
       "rule-name": "rename store_id",
       "rule-target": "column",
       "object-locator": {
@@ -152,7 +139,7 @@
     },
     {
       "rule-type": "transformation",
-      "rule-id": "13",
+      "rule-id": "12",
       "rule-name": "fill is_point_purchase_prohibited",
       "rule-target": "column",
       "object-locator": {
