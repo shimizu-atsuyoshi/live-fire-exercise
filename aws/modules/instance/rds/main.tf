@@ -36,7 +36,7 @@ variable "ingress" {
 resource "aws_rds_cluster" "this" {
   cluster_identifier              = var.cluster_identifier
   engine                          = "aurora-mysql"
-  engine_version                  = "8.0.mysql_aurora.3.05.2"
+  engine_version                  = "8.0.mysql_aurora.3.08.2"
   master_username                 = "root"
   master_password                 = var.master_password
   database_name                   = var.database_name
