@@ -93,15 +93,8 @@ resource "aws_rds_cluster_parameter_group" "this" {
   family = "aurora-mysql8.0"
 
   parameter {
-    name         = "binlog_format"
-    value        = "ROW"
-    apply_method = "pending-reboot"
-  }
-
-  parameter {
-    name         = "binlog_row_image"
-    value        = "FULL"
-    apply_method = "pending-reboot"
+    name  = "time_zone"
+    value = "Asia/Tokyo"
   }
 
   tags = {
