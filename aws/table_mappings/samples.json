@@ -29,7 +29,7 @@
     },
     {
       "rule-type": "transformation",
-      "rule-id": "2",
+      "rule-id": "3",
       "rule-name": "add updated_at",
       "rule-target": "column",
       "object-locator": {
