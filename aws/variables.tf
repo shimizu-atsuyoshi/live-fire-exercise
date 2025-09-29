@@ -42,3 +42,13 @@ variable "database_name" {
   description = "database name"
   type        = string
 }
+
+variable "timezone_batch_cpu" {
+  description = "timezone batch cpu"
+  type        = string
+}
+
+variable "timezone_batch_memory" {
+  description = "timezone batch memory"
+  type        = string
+}
