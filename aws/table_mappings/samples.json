@@ -25,7 +25,7 @@
         "type": "datetime",
         "precision": 6
       },
-      "expression": "NOW()"
+      "expression": "datetime('now','localtime')"
     },
     {
       "rule-type": "transformation",
@@ -42,7 +42,7 @@
         "type": "datetime",
         "precision": 6
       },
-      "expression": "NOW()"
+      "expression": "datetime('now','localtime')"
     },
     {
       "rule-type": "transformation",
