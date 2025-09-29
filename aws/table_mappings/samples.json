@@ -25,7 +25,7 @@
         "type": "datetime",
         "precision": 6
       },
-      "expression": "datetime('$AR_H_COMMIT_TIMESTAMP','+9 hours')"
+      "expression": "datetime($AR_H_COMMIT_TIMESTAMP,'+9 hours')"
     },
     {
       "rule-type": "transformation",
@@ -42,7 +42,7 @@
         "type": "datetime",
         "precision": 6
       },
-      "expression": "datetime('$AR_H_COMMIT_TIMESTAMP','+9 hours')"
+      "expression": "datetime($AR_H_COMMIT_TIMESTAMP,'+9 hours')"
     },
     {
       "rule-type": "transformation",
