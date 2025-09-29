@@ -11,4 +11,4 @@ database_master_password = "password"
 database_name            = "sample"
 
 timezone_batch_cpu    = "2048"
-timezone_batch_memory = "1"
+timezone_batch_memory = "2"

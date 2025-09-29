@@ -1,6 +1,7 @@
 module "timezone_compute" {
   source     = "./modules/batch/compute"
   name       = "timezone"
+  vpc_id     = module.vpc.id
   subnet_ids = module.private_subnets.ids
 }
 
