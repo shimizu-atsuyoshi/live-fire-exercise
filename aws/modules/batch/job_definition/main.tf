@@ -114,6 +114,37 @@ resource "aws_iam_role" "execution_role" {
   })
 }
 
+resource "aws_iam_role_policy" "execution_role_policy" {
+  name = "${var.name}-execution-role-policy"
+  role = aws_iam_role.execution_role.id
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Action" : [
+          "ecr:GetAuthorizationToken",
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage"
+        ],
+        "Effect" : "Allow",
+        "Resource" : aws_ecr_repository.this.arn
+      },
+      {
+        "Action" : [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "logs:DescribeLogGroups",
+          "logs:DescribeLogStreams"
+        ],
+        "Effect" : "Allow",
+        "Resource" : aws_cloudwatch_log_group.this.arn
+      }
+    ]
+  })
+}
+
 resource "aws_iam_role_policy_attachment" "execution_role_policy" {
   role       = aws_iam_role.execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
