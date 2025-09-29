@@ -147,7 +147,7 @@ resource "aws_batch_job_definition" "this" {
               }
             ]
             logConfiguration = {
-              logFriver = "awslogs",
+              logDriver = "awslogs",
               options = {
                 awslogs-group         = aws_cloudwatch_log_group.this.name
                 awslogs-region        = "ap-northeast-1"
