@@ -163,7 +163,7 @@ resource "aws_batch_job_definition" "this" {
         containers = [
           {
             name        = var.name
-            image       = var.image
+            image       = aws_ecr_repository.this.repository_url
             command     = var.command
             secrets     = var.secrets
             environment = var.environment
