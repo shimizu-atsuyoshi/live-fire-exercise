@@ -10,5 +10,5 @@ private_subnet_d_cidr_block = "192.168.5.0/24"
 database_master_password = "password"
 database_name            = "sample"
 
-timezone_batch_cpu    = "2048"
-timezone_batch_memory = "2"
+timezone_batch_cpu    = "512"
+timezone_batch_memory = "0.25"
