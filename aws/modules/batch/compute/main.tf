@@ -37,6 +37,7 @@ resource "aws_batch_compute_environment" "this" {
     type = "FARGATE"
     max_vcpus = 16
     subnets = var.subnet_ids
+    security_group_ids = []
   }
 }
 
