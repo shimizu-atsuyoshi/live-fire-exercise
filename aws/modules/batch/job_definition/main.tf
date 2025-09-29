@@ -10,7 +10,7 @@ variable "name" {
 
 variable "command" {
   description = "execute command"
-  type        = string
+  type        = list(string)
 }
 
 variable "cpu" {
