@@ -99,7 +99,7 @@ resource "aws_iam_role_policy" "task_role_policy" {
 
 resource "aws_iam_role" "execution_role" {
   name               = "${var.name}-execution-role"
-  assume_role_policy = jsondecode({
+  assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
       {
