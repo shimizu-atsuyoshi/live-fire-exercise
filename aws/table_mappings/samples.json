@@ -1,0 +1,96 @@
+{
+  "rules": [
+    {
+      "rule-type": "selection",
+      "rule-id": "1",
+      "rule-name": "select schema",
+      "object-locator": {
+        "schema-name": "sample",
+        "table-name": "samples"
+      },
+      "rule-action": "include"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "2",
+      "rule-name": "add created_at",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "sample",
+        "table-name": "samples"
+      },
+      "rule-action": "add-column",
+      "value": "created_at",
+      "data-type": {
+        "type": "datetime",
+        "precision": 6
+      },
+      "expression": "$AR_H_COMMIT_TIMESTAMP"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "2",
+      "rule-name": "add updated_at",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "sample",
+        "table-name": "samples"
+      },
+      "rule-action": "add-column",
+      "value": "updated_at",
+      "data-type": {
+        "type": "datetime",
+        "precision": 6
+      },
+      "expression": "$AR_H_COMMIT_TIMESTAMP"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "4",
+      "rule-name": "include id",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "sample",
+        "table-name": "samples",
+        "column-name": "id"
+      },
+      "rule-action": "include-column"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "5",
+      "rule-name": "include name",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "sample",
+        "table-name": "samples",
+        "column-name": "name"
+      },
+      "rule-action": "include-column"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "6",
+      "rule-name": "include created_at",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "sample",
+        "table-name": "samples",
+        "column-name": "created_at"
+      },
+      "rule-action": "include-column"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "7",
+      "rule-name": "include updated_at",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "sample",
+        "table-name": "samples",
+        "column-name": "updated_at"
+      },
+      "rule-action": "include-column"
+    }
+  ]
+}
