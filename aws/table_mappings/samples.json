@@ -25,7 +25,7 @@
         "type": "datetime",
         "precision": 6
       },
-      "expression": "$AR_H_COMMIT_TIMESTAMP"
+      "expression": "NOW()"
     },
     {
       "rule-type": "transformation",
@@ -42,7 +42,7 @@
         "type": "datetime",
         "precision": 6
       },
-      "expression": "$AR_H_COMMIT_TIMESTAMP"
+      "expression": "NOW()"
     },
     {
       "rule-type": "transformation",
