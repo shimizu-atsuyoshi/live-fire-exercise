@@ -160,6 +160,9 @@ resource "aws_batch_job_definition" "this" {
         taskRoleArn      = aws_iam_role.task_role.arn
         executionRoleArn = aws_iam_role.execution_role.arn
         platformVersion  = "LATEST"
+        networkConfiguration = {
+          assignPublicIp = "ENABLED"
+        }
         containers = [
           {
             name        = var.name
@@ -184,9 +187,6 @@ resource "aws_batch_job_definition" "this" {
                 awslogs-region        = "ap-northeast-1"
                 awslogs-stream-prefix = "${var.name}-job"
               }
-            }
-            networkConfiguration = {
-              assignPublicIp = true
             }
           }
         ]
