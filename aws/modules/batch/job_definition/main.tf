@@ -123,7 +123,7 @@ resource "aws_batch_job_definition" "this" {
   name                  = var.name
   type                  = "container"
   platform_capabilities = ["FARGATE"]
-  ecs_properties        = jsondecode({
+  ecs_properties        = jsonencode({
     taskProperties = [
       {
         taskRoleArn      = aws_iam_role.task_role.arn
