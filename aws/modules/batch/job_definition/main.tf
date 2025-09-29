@@ -185,6 +185,9 @@ resource "aws_batch_job_definition" "this" {
                 awslogs-stream-prefix = "${var.name}-job"
               }
             }
+            networkConfiguration = {
+              assignPublicIp = true
+            }
           }
         ]
       }
