@@ -39,7 +39,7 @@ resource "aws_security_group" "this" {
   name        = "${var.name}-sg"
   description = "security group for ${var.name} batch compute"
   vpc_id      = var.vpc_id
-  egress      = {
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
