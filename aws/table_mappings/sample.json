@@ -1,0 +1,38 @@
+{
+  "rules": [
+    {
+      "rule-type": "selection",
+      "rule-id": "1",
+      "rule-name": "select schema",
+      "object-locator": {
+        "schema-name": "sample",
+        "table-name": "sample"
+      },
+      "rule-action": "include",
+      "filters": [
+        {
+          "filter-type": "source",
+          "column-name": "status",
+          "filter-conditions": [
+            {
+              "filter-operator": "noteq",
+              "value": "private"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "2",
+      "rule-name": "include all columns",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "sample",
+        "table-name": "sample",
+        "column-name": "%"
+      },
+      "rule-action": "include-column"
+    }
+  ]
+}
