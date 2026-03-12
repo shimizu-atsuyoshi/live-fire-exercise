@@ -43,6 +43,6 @@ module "dms" {
     database_name = module.source_db.database_name
   }
   target_s3 = {
-    bucket = "dms_target"
+    bucket = "live_fire_exercise_dms_target"
   }
 }
