@@ -65,10 +65,10 @@ resource "aws_security_group" "this" {
 }
 
 resource "aws_s3_bucket" "dms_target" {
-  bucket = "dms-target"
+  bucket = var.target_s3.bucket
 
   tags = {
-    Name = "dms-target"
+    Name = var.target_s3.bucket
   }
 }
 
