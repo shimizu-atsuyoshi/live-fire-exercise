@@ -12,7 +12,6 @@
       "filters": [
         {
           "filter-type": "source",
-          "column-name": "Op",
           "filter-conditions": [
             {
               "filter-operator": "eq",
