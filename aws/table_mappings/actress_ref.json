@@ -12,6 +12,7 @@
       "filters": [
         {
           "filter-type": "source",
+          "column-name": "operation",
           "filter-conditions": [
             {
               "filter-operator": "eq",
@@ -20,6 +21,23 @@
           ]
         }
       ]
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "10",
+      "rule-name": "add_operation",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "monocontents",
+        "table-name": "actress_ref"
+      },
+      "rule-action": "add-column",
+      "value": "operation",
+      "expression": "operation_indicator('D', 'U', 'I')",
+      "data-type": {
+        "type": "string",
+        "length": 50
+      }
     },
     {
       "rule-type": "transformation",
