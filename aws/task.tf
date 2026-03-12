@@ -1,6 +1,6 @@
 module "actress_ref" {
   source = "./modules/task/dms"
-  replication_task_id       = "store-products"
+  replication_task_id       = "actress-ref"
   replication_instance_arn  = module.dms.replication_instance_arn
   source_endpoint_arn       = module.dms.source_endpoint_arn
   target_endpoint_arn       = module.dms.target_endpoint_arn
