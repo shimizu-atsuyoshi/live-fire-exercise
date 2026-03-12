@@ -8,7 +8,19 @@
         "schema-name": "monocontents",
         "table-name": "actress_ref"
       },
-      "rule-action": "include"
+      "rule-action": "include",
+      "filters": [
+        {
+          "filter-type": "source",
+          "column-name": "Op",
+          "filter-conditions": [
+            {
+              "filter-operator": "eq",
+              "value": "D"
+            }
+          ]
+        }
+      ]
     },
     {
       "rule-type": "transformation",
