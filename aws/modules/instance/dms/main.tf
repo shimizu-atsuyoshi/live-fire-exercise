@@ -34,7 +34,7 @@ variable "target_s3" {
 
 resource "aws_dms_replication_instance" "this" {
   replication_instance_id      = var.replication_instance_id
-  replication_instance_class   = "dms.t3.micro"
+  replication_instance_class   = "dms.t3.small"
   allocated_storage            = 8
   publicly_accessible          = false
   multi_az                     = false
