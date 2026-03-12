@@ -25,15 +25,10 @@ variable "source_db" {
   })
 }
 
-variable "target_db" {
-  description = "target db"
+variable "target_s3" {
+  description = "target s3"
   type = object({
-    engine_name = string
-    username = string
-    password = string
-    server_name = string
-    port = number
-    database_name = string
+    bucket = string
   })
 }
 
@@ -69,6 +64,62 @@ resource "aws_security_group" "this" {
   }
 }
 
+resource "aws_s3_bucket" "dms_target" {
+  bucket = "dms-target"
+
+  tags = {
+    Name = "dms-target"
+  }
+}
+
+resource "aws_iam_role" "dms_target_s3_endpoint_role" {
+  name = "dms-target-s3-endpoint-role"
+  assume_role_policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Sid" : "",
+        "Effect" : "Allow",
+        "Principal" : {
+          "Service" : "dms.ap-northeast-1.amazonaws.com"
+        },
+        "Action" : "sts:AssumeRole"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy" "dms_target_s3_endpoint_role_policy" {
+  name = "dms-target-s3-endpoint-role-policy"
+  role = aws_iam_role.dms_target_s3_endpoint_role.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = [
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "s3:PutObjectTagging",
+        ],
+        Resource = [
+          "${aws_s3_bucket.dms_target.arn}/*",
+        ]
+      },
+      {
+        Effect = "Allow",
+        Action = [
+          "s3:ListBucket",
+        ],
+        Resource = [
+          "${aws_s3_bucket.dms_target.arn}",
+        ]
+      }
+    ]
+  })
+}
+
 resource "aws_dms_endpoint" "source" {
   endpoint_type = "source"
   endpoint_id   = "${var.replication_instance_id}-source-endpoint"
@@ -80,15 +131,12 @@ resource "aws_dms_endpoint" "source" {
   database_name = var.source_db.database_name
 }
 
-resource "aws_dms_endpoint" "target" {
-  endpoint_type = "target"
-  endpoint_id   = "${var.replication_instance_id}-target-endpoint"
-  engine_name   = var.target_db.engine_name
-  username      = var.target_db.username
-  password      = var.target_db.password
-  server_name   = var.target_db.server_name
-  port          = var.target_db.port
-  database_name = var.target_db.database_name
+resource "aws_dms_s3_endpoint" "target" {
+  endpoint_type           = "target"
+  endpoint_id             = "${var.replication_instance_id}-target-endpoint"
+  bucket_name             = var.target_s3.bucket
+  service_access_role_arn = aws_iam_role.dms_target_s3_endpoint_role.arn
+  cdc_max_batch_interval  = 60
 }
 
 output "replication_instance_arn" {
@@ -100,7 +148,7 @@ output "source_endpoint_arn" {
 }
 
 output "target_endpoint_arn" {
-  value = aws_dms_endpoint.target.endpoint_arn
+  value = aws_dms_s3_endpoint.target.endpoint_arn
 }
 
 output "security_group_id" {
