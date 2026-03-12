@@ -16,6 +16,7 @@ variable "subnet_ids" {
 variable "gateway_id" {
   description = "gateway id"
   type        = string
+  default     = null
 }
 
 resource "aws_route_table" "this" {
@@ -32,7 +33,13 @@ resource "aws_route_table_association" "this" {
 }
 
 resource "aws_route" "this" {
-  route_table_id = aws_route_table.this.id
-  gateway_id = var.gateway_id
+  count = var.gateway_id != null ? 1 : 0
+
+  route_table_id         = aws_route_table.this.id
+  gateway_id             = var.gateway_id
   destination_cidr_block = "0.0.0.0/0"
+}
+
+output "id" {
+  value = aws_route_table.this.id
 }

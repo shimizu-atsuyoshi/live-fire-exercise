@@ -32,10 +32,24 @@ module "internet_gateway" {
   name = "live-fire-exercise"
 }
 
-module "route_table" {
+module "public_route_table" {
   source = "./modules/network/route_table"
   vpc_id = module.vpc.id
   subnet_ids = module.public_subnets.ids
   gateway_id = module.internet_gateway.id
-  name = "live-fire-exercise"
+  name = "live-fire-exercise-public"
+}
+
+module "private_route_table" {
+  source = "./modules/network/route_table"
+  vpc_id = module.vpc.id
+  subnet_ids = module.private_subnets.ids
+  name = "live-fire-exercise-private"
+}
+
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id            = module.vpc.id
+  service_name      = "com.amazonaws.ap-northeast-1.s3"
+  vpc_endpoint_type = "Gateway"
+  route_table_ids   = [module.private_route_table.id]
 }
