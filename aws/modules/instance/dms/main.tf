@@ -113,7 +113,7 @@ resource "aws_iam_role_policy" "dms_target_s3_endpoint_role_policy" {
           "s3:ListBucket",
         ],
         Resource = [
-          "${aws_s3_bucket.dms_target.arn}",
+          "${aws_s3_bucket.dms_target.arn}*",
         ]
       }
     ]
