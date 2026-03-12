@@ -137,6 +137,7 @@ resource "aws_dms_s3_endpoint" "target" {
   bucket_name             = var.target_s3.bucket
   service_access_role_arn = aws_iam_role.dms_target_s3_endpoint_role.arn
   cdc_max_batch_interval  = 60
+  data_format             = "csv"
 }
 
 output "replication_instance_arn" {
