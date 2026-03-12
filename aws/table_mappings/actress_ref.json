@@ -1,0 +1,26 @@
+{
+  "rules": [
+    {
+      "rule-type": "selection",
+      "rule-id": "1",
+      "rule-name": "select schema",
+      "object-locator": {
+        "schema-name": "monocontents",
+        "table-name": "actress_ref"
+      },
+      "rule-action": "include"
+    },
+    {
+      "rule-type": "transformation",
+      "rule-id": "10000",
+      "rule-name": "include_all_columns",
+      "rule-target": "column",
+      "object-locator": {
+        "schema-name": "monocontents",
+        "table-name": "actress_ref",
+        "column-name": "%"
+      },
+      "rule-action": "include-column"
+    }
+  ]
+}
