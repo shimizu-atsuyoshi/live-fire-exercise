@@ -19,6 +19,12 @@ variable "gateway_id" {
   default     = null
 }
 
+variable "with_gateway" {
+  description = "gateway flag"
+  type        = bool
+  default     = false
+}
+
 resource "aws_route_table" "this" {
   vpc_id = var.vpc_id
   tags = {
@@ -33,7 +39,7 @@ resource "aws_route_table_association" "this" {
 }
 
 resource "aws_route" "this" {
-  count = var.gateway_id != null ? 1 : 0
+  count = var.with_gateway ? 1 : 0
 
   route_table_id         = aws_route_table.this.id
   gateway_id             = var.gateway_id

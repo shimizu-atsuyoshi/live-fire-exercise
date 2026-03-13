@@ -37,6 +37,7 @@ module "public_route_table" {
   vpc_id = module.vpc.id
   subnet_ids = module.public_subnets.ids
   gateway_id = module.internet_gateway.id
+  with_gateway = true
   name = "live-fire-exercise-public"
 }
 
